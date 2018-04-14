@@ -140,15 +140,15 @@ list[2] = 1000     # 列表中是合法应用
 
 #字典
 
-dict = {}
-dict['one'] = "This is one"
-dict[2] = "This is two"
+dict3 = {}
+dict3['one'] = "This is one"
+dict3[2] = "This is two"
 
 tinydict = {'name': 'john','code':6734, 'dept': 'sales'}
 
 
-print dict['one']          # 输出键为'one' 的值
-print dict[2]              # 输出键为 2 的值
+print dict3['one']          # 输出键为'one' 的值
+print dict3[2]              # 输出键为 2 的值
 print tinydict             # 输出完整的字典
 print tinydict.keys()      # 输出所有键
 print tinydict.values()    # 输出所有值
@@ -576,20 +576,20 @@ print "After deleting tup : "
 #print tup;
 
 
-dict = {'Name': 'Zara', 'Age': 7, 'Class': 'First'};
+dict2 = {'Name': 'Zara', 'Age': 7, 'Class': 'First'};
 
-dict['Age'] = 8; # update existing entry
-dict['School'] = "DPS School"; # Add new entry
-
-
-print "dict['Age']: ", dict['Age'];
-print "dict['School']: ", dict['School'];
+dict2['Age'] = 8; # update existing entry
+dict2['School'] = "DPS School"; # Add new entry
 
 
-dict = {'Name': 'Zara', 'Age': 7, 'Class': 'First'};
+print "dict2['Age']: ", dict2['Age'];
+print "dict2['School']: ", dict2['School'];
 
-del dict['Name']; # 删除键是'Name'的条目
-dict.clear();     # 清空词典所有条目
+
+dict1 = {'Name': 'Zara', 'Age': 7, 'Class': 'First'};
+
+del dict1['Name']; # 删除键是'Name'的条目
+dict1.clear();     # 清空词典所有条目
 #del dict ;        # 删除词典
 
 
@@ -1133,3 +1133,115 @@ str = "runoob"
 print len(str)             # 字符串长度
 l = [1,2,3,4,5]
 print len(l)               # 列表元素个数
+
+
+#python range() 函数可创建一个整数列表，一般用在 for 循环中。
+print range(10)        # 从 0 开始到 10
+print range(0, 30, 5)  # 步长为 5
+print range(0, -10, -1) # 负数 [0, -1, -2, -3, -4, -5, -6, -7, -8, -9]
+print range(0)  #[]
+print range(1, 0)   #[]
+
+
+#type() 函数如果你只有第一个参数则返回对象的类型，三个参数返回新的类型对象。 class type(name, bases, dict)
+
+print type(1)
+print type([2])
+print type({0:'zero'})
+print type('runoob')
+print type( x ) == int
+
+class X(object):
+     a=1
+X = type('X', (object,), dict(a=1))  # 产生一个新的类型 X
+print X
+
+
+#bytearray() 方法返回一个新字节数组。这个数组里的元素是可变的，并且每个元素的值范围: 0 <= x < 256。
+print bytearray()
+print bytearray([1,2,3])
+print bytearray('runoob', 'utf-8')
+
+
+#unichr() 函数 和 chr()函数功能基本一样， 只不过是返回 unicode 的字符。
+print unichr(97)
+print unichr(98)
+
+#callable() 函数用于检查一个对象是否是可调用的。如果返回True，object仍然可能调用失败；但如果返回False，调用对象ojbect绝对不会成功。
+
+print callable(0)
+print callable("runoob")
+
+def add(a, b):
+    return a + b
+print callable(add)             # 函数返回 True
+
+class A:
+    def method(self):
+         return 0
+print callable(A)               # 类返回 True
+
+a = A()
+print callable(a)               # 没有实现 __call__, 返回 False
+
+
+#Python2.6 开始，新增了一种格式化字符串的函数 str.format()，它增强了字符串格式化的功能。
+print "{} {}".format("hello", "world")
+print "{0} {1}".format("hello", "world")  # 设置指定位置
+print "{1} {0} {1}".format("hello", "world")  # 设置指定位置
+
+print("网站名：{name}, 地址 {url}".format(name="菜鸟教程", url="www.runoob.com"))
+
+# 通过字典设置参数
+site = {"name": "菜鸟教程", "url": "www.runoob.com"}
+print("网站名：{name}, 地址 {url}".format(**site))
+
+# 通过列表索引设置参数
+my_list = ['菜鸟教程', 'www.runoob.com']
+print("网站名：{0[0]}, 地址 {0[1]}".format(my_list))  # "0" 是必须的
+
+class AssignValue(object):
+    def __init__(self, value):
+        self.value = value
+my_value = AssignValue(6)
+print('value 为: {0.value}'.format(my_value))  # "0" 是可选的
+#数字格式化
+print("{:.2f}".format(3.1415926));
+
+print ("{} 对应的位置是 {{0}}".format("runoob"))
+
+
+#locals() 函数会以字典类型返回当前位置的全部局部变量
+def runoob(arg):    # 两个局部变量：arg、z
+    z = 1
+    print (locals())
+print  runoob(4)    # 返回一个名字/值对的字典
+
+#reduce() 函数会对参数序列中元素进行累积。
+#函数将一个数据集合（链表，元组等）中的所有数据进行下列操作：用传给reduce中的函数 function（有两个参数）先对集合中的第 1、2 个元素进行操作，得到的结果再与第三个数据用 function 函数运算，最后得到一个结果。
+
+def add(x, y) :            # 两数相加
+    return x + y
+print reduce(add, [1,2,3,4,5])   # 计算列表和：1+2+3+4+5
+print reduce(lambda x, y: x+y, [1,2,3,4,5])  # 使用 lambda 匿名函数
+
+#chr() 用一个范围在 range（256）内的（就是0～255）整数作参数，返回一个对应的字符。
+print chr(0x30), chr(0x31), chr(0x61)   # 十六进制
+print chr(48), chr(49), chr(97)         # 十进制
+
+#frozenset() 返回一个冻结的集合，冻结后集合不能再添加或删除任何元素。
+a = frozenset(range(10))     # 生成一个新的不可变集合
+print a
+b = frozenset('runoob')
+print b
+
+#long() 函数将数字或字符串转换为一个长整型。
+print long()
+print long(1)
+print long('123')
+
+
+
+
+
+
