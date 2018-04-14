@@ -120,18 +120,18 @@ print list + tinylist    # 打印组合的列表
 
 
 #元组
-tuple = ( 'runoob', 786 , 2.23, 'john', 70.2 )
+tuple1 = ( 'runoob', 786 , 2.23, 'john', 70.2 )
 tinytuple = (123, 'john')
 
-print tuple               # 输出完整元组
-print tuple[0]            # 输出元组的第一个元素
-print tuple[1:3]          # 输出第二个至第三个的元素
-print tuple[2:]           # 输出从第三个开始至列表末尾的所有元素
+print tuple1               # 输出完整元组
+print tuple1[0]            # 输出元组的第一个元素
+print tuple1[1:3]          # 输出第二个至第三个的元素
+print tuple1[2:]           # 输出从第三个开始至列表末尾的所有元素
 print tinytuple * 2       # 输出元组两次
-print tuple + tinytuple   # 打印组合的元组
+print tuple1 + tinytuple   # 打印组合的元组
 
 
-tuple = ( 'runoob', 786 , 2.23, 'john', 70.2 )
+tuples = ( 'runoob', 786 , 2.23, 'john', 70.2 )
 list = [ 'runoob', 786 , 2.23, 'john', 70.2 ]
 #tuple[2] = 1000    # 元组中是非法应用
 list[2] = 1000     # 列表中是合法应用
@@ -990,8 +990,146 @@ print  isinstance("Hello world", basestring)
 execfile('exec.py')
 
 
+#issubclass() 方法用于判断参数 class 是否是类型参数 classinfo 的子类。
+
+class A:
+    pass
+class B(A):
+    pass
+
+print(issubclass(B,A))    # 返回 True
+
+#super() 函数是用于调用父类(超类)的一个方法。
+class C(object):   # Python2.x 记得继承 object
+    pass
+class D(C):
+    def add(self, x):
+        super(D, self).add(x)
+
+class FooParent(object):
+    def __init__(self):
+        self.parent = 'I\'m the parent.'
+        print ('Parent')
+
+    def bar(self,message):
+        print ("%s from Parent" % message)
+
+class FooChild(FooParent):
+    def __init__(self):
+        # super(FooChild,self) 首先找到 FooChild 的父类（就是类 FooParent），然后把类B的对象 FooChild 转换为类 FooParent 的对象
+        super(FooChild,self).__init__()
+        print ('Child')
+
+    def bar(self,message):
+        super(FooChild, self).bar(message)
+        print ('Child bar fuction')
+        print (self.parent)
+
+if __name__ == '__main__':
+    fooChild = FooChild()
+    fooChild.bar('HelloWorld')
 
 
 
+#bin() 返回一个整数 int 或者长整数 long int 的二进制表示。
+
+print bin(10)
+
+#file() 函数用于创建一个 file 对象，它有一个别名叫 open()，更形象一些，它们是内置函数。参数是以字符串的形式传递的。
+#更多文件操作可参考：Python 文件I/O。
+
+f = file('foo.txt')
+f.read()
 
 
+#iter() 函数用来生成迭代器。
+
+lst = [1, 2, 3]
+
+
+for i in iter(lst):
+    print(i)
+
+
+#property() 函数的作用是在新式类中返回属性值。
+class C(object):
+    def __init__(self):
+        self._x = None
+
+    def getx(self):
+        return self._x
+
+    def setx(self, value):
+        self._x = value
+
+    def delx(self):
+        del self._x
+
+    x = property(getx, setx, delx, "I'm the 'x' property.")
+
+
+class Parrot(object):
+    def __init__(self):
+        self._voltage = 100000
+
+    @property
+    def voltage(self):
+        """Get the current voltage."""
+        return self._voltage
+
+
+
+class C(object):
+    def __init__(self):
+        self._x = None
+
+    @property
+    def x(self):
+        """I'm the 'x' property."""
+        return self._x
+
+    @x.setter
+    def x(self, value):
+        self._x = value
+
+    @x.deleter
+    def x(self):
+        del self._x
+
+
+
+#Python 元组 tuple() 函数将列表转换为元组。
+
+print tuple([1,2,3,4])
+
+print tuple({1:2,3:4})    #针对字典 会返回字典的key组成的tuple
+
+print tuple({1:2,3:4})    #针对字典 会返回字典的key组成的tuple
+
+aList = [123, 'xyz', 'zara', 'abc'];
+aTuple = tuple(aList)
+
+print "Tuple elements : ", aTuple
+
+
+
+#filter() 函数用于过滤序列，过滤掉不符合条件的元素，返回由符合条件元素组成的新列表。
+def is_odd(n):
+    return n % 2 == 1
+
+newlist = filter(is_odd, [1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
+print(newlist)
+
+import math
+def is_sqr(x):
+    return math.sqrt(x) % 1 == 0
+
+newlist = filter(is_sqr, range(1, 101))
+print(newlist)
+
+
+#Python len() 方法返回对象（字符、列表、元组等）长度或项目个数。
+str = "runoob"
+print len(str)             # 字符串长度
+l = [1,2,3,4,5]
+print len(l)               # 列表元素个数
