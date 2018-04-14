@@ -108,15 +108,15 @@ print str + "TEST"  # 输出连接的字符串
 
 #列表
 
-list = [ 'runoob', 786 , 2.23, 'john', 70.2 ]
+list7 = [ 'runoob', 786 , 2.23, 'john', 70.2 ]
 tinylist = [123, 'john']
 
-print list               # 输出完整列表
-print list[0]            # 输出列表的第一个元素
-print list[1:3]          # 输出第二个至第三个元素
-print list[2:]           # 输出从第三个开始至列表末尾的所有元素
+print list7               # 输出完整列表
+print list7[0]            # 输出列表的第一个元素
+print list7[1:3]          # 输出第二个至第三个元素
+print list7[2:]           # 输出从第三个开始至列表末尾的所有元素
 print tinylist * 2       # 输出列表两次
-print list + tinylist    # 打印组合的列表
+print list7 + tinylist    # 打印组合的列表
 
 
 #元组
@@ -132,9 +132,9 @@ print tuple1 + tinytuple   # 打印组合的元组
 
 
 tuples = ( 'runoob', 786 , 2.23, 'john', 70.2 )
-list = [ 'runoob', 786 , 2.23, 'john', 70.2 ]
+list6 = [ 'runoob', 786 , 2.23, 'john', 70.2 ]
 #tuple[2] = 1000    # 元组中是非法应用
-list[2] = 1000     # 列表中是合法应用
+list6[2] = 1000     # 列表中是合法应用
 
 
 
@@ -288,21 +288,21 @@ else:
 
 a = 10
 b = 20
-list = [1, 2, 3, 4, 5 ];
+list5 = [1, 2, 3, 4, 5 ];
 
-if ( a in list ):
+if ( a in list5 ):
    print "1 - 变量 a 在给定的列表中 list 中"
 else:
    print "1 - 变量 a 不在给定的列表中 list 中"
 
-if ( b not in list ):
+if ( b not in list5 ):
    print "2 - 变量 b 不在给定的列表中 list 中"
 else:
    print "2 - 变量 b 在给定的列表中 list 中"
 
 # 修改变量 a 的值
 a = 2
-if ( a in list ):
+if ( a in list5 ):
    print "3 - 变量 a 在给定的列表中 list 中"
 else:
    print "3 - 变量 a 不在给定的列表中 list 中"
@@ -544,10 +544,10 @@ print "list1[0]: ", list1[0]
 print "list2[1:5]: ", list2[1:5]
 
 
-list = []          ## 空列表
-list.append('Google')   ## 使用 append() 添加元素
-list.append('Runoob')
-print list
+list3 = []          ## 空列表
+list3.append('Google')   ## 使用 append() 添加元素
+list3.append('Runoob')
+print list3
 
 
 list1 = ['physics', 'chemistry', 1997, 2000]
@@ -1240,8 +1240,114 @@ print long()
 print long(1)
 print long('123')
 
+#reload() 用于重新载入之前载入的模块
+
+import sys
+print sys.getdefaultencoding()            # 当前默认编码
+print reload(sys)                         # 使用 reload
+sys.setdefaultencoding('utf8')      # 设置编码
+print sys.getdefaultencoding()
+
+#vars() 函数返回对象object的属性和属性值的字典对象。
+#返回对象object的属性和属性值的字典对象，如果没有参数，就打印当前调用位置的属性和属性值 类似 locals()。
+print(vars())
+class Runoob:
+    a=1
+print(vars(Runoob))
+runoob = Runoob()
+print(vars(runoob))
+
+#classmethod 修饰符对应的函数不需要实例化，不需要 self 参数，但第一个参数需要是表示自身类的 cls 参数，可以来调用类的属性，类的方法，实例化对象等。
+
+class A(object):
+    bar = 1
+    def func1(self):
+        print ('foo')
+    @classmethod
+    def func2(cls):
+        print ('func2')
+        print (cls.bar)
+        cls().func1()   # 调用 foo 方法
+
+A.func2()               # 不需要实例化
+
+#getattr() 函数用于返回一个对象属性值。
+
+class A(object):
+    bar=1
+a = A()
+print  getattr(a, 'bar')
+print getattr(a, 'bar2', 3)    # 属性 bar2 不存在，但设置了默认值
+
+#map() 会根据提供的函数对指定序列做映射。
+
+#Python 2.x 返回列表。
+#Python 3.x 返回迭代器。
+def square(x) :            # 计算平方数
+    return x ** 2
+
+print map(square, [1,2,3,4,5])   # 计算列表各个元素的平方
+
+print map(lambda x: x ** 2, [1, 2, 3, 4, 5])  # 使用 lambda 匿名函数
+
+print map(lambda x, y: x + y, [1, 3, 5, 7, 9], [2, 4, 6, 8, 10])
+
+listx = [1,2,3,4,5,6,7]       # 7 个元素
+listy = [2,3,4,5,6,7]         # 6 个元素
+listz = [100,100,100,100]     # 4 个元素
+#list_result = map(lambda x,y,z : x+y+z  ,listx, listy, listz)
+print listx+listy+listz
 
 
+#repr() 函数将对象转化为供解释器读取的形式。
+s = 'RUNOOB'
+print repr(s)
+
+dict2 = {'runoob': 'runoob.com', 'google': 'google.com'};
+print repr(dict2)
+
+#xrange() 函数用法与 range 完全相同，所不同的是生成的不是一个数组，而是一个生成器。
+print xrange(8)
+print list(xrange(8))
+print range(8)
+print xrange(3, 5)
+print list(xrange(3,5))
+print xrange(0,6,2)  # 步长为 2
+print list(xrange(0,6,2))
 
 
+#cmp(x,y) 函数用于比较2个对象，如果 x < y 返回 -1, 如果 x == y 返回 0, 如果 x > y 返回 1。
+print "cmp(80, 100) : ", cmp(80, 100)
+print "cmp(180, 100) : ", cmp(180, 100)
+print "cmp(-80, 100) : ", cmp(-80, 100)
+print "cmp(80, -100) : ", cmp(80, -100)
 
+#globals() 函数会以字典类型返回当前位置的全部全局变量。
+a='runoob'
+print globals() # globals 函数返回一个全局变量的字典，包括所有导入的变量。
+
+
+#max() 方法返回给定参数的最大值，参数可以为序列。
+print "max(80, 100, 1000) : ", max(80, 100, 1000)
+print "max(-20, 100, 400) : ", max(-20, 100, 400)
+print "max(-80, -20, -10) : ", max(-80, -20, -10)
+print "max(0, 100, -400) : ", max(0, 100, -400)
+
+
+#reverse() 函数用于反向列表中元素。
+aList = [123, 'xyz', 'zara', 'abc', 'xyz'];
+aList.reverse();
+print "List : ", aList;
+
+#zip() 函数用于将可迭代的对象作为参数，将对象中对应的元素打包成一个个元组，然后返回由这些元组组成的列表。
+#如果各个迭代器的元素个数不一致，则返回列表长度与最短的对象相同，利用 * 号操作符，可以将元组解压为列表。
+
+a = [1,2,3]
+b = [4,5,6]
+c = [4,5,6,7,8]
+zipped = zip(a,b)     # 打包为元组的列表
+print zipped
+zipped2 = zip(a,c)              # 元素个数与最短的列表一致
+print zipped2
+zipped3=zip(*zipped)          # 与 zip 相反，可理解为解压，返回二维矩阵式
+print zipped3
