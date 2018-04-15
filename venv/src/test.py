@@ -96,14 +96,14 @@ print counter
 print miles
 print name
 
-str = 'Hello World!'
+str6 = 'Hello World!'
 
-print str           # 输出完整字符串
-print str[0]        # 输出字符串中的第一个字符
-print str[2:5]      # 输出字符串中第三个至第五个之间的字符串
-print str[2:]       # 输出从第三个字符开始的字符串
-print str * 2       # 输出字符串两次
-print str + "TEST"  # 输出连接的字符串
+print str6           # 输出完整字符串
+print str6[0]        # 输出字符串中的第一个字符
+print str6[2:5]      # 输出字符串中第三个至第五个之间的字符串
+print str6[2:]       # 输出从第三个字符开始的字符串
+print str6 * 2       # 输出字符串两次
+print str6 + "TEST"  # 输出连接的字符串
 
 
 #列表
@@ -629,9 +629,9 @@ print cal;
 
 
 # 定义函数
-def printme( str ):
+def printme( str33 ):
    "打印任何传入的字符串"
-   print str;
+   print str33;
    return;
 
 # 调用函数
@@ -746,15 +746,15 @@ fo.close()
 
 # 打开一个文件
 fo = open("foo.txt", "r+")
-str = fo.read(10)
-print "读取的字符串是 : ", str
+str34 = fo.read(10)
+print "读取的字符串是 : ", str34
 # 关闭打开的文件
 fo.close()
 
 # 打开一个文件
 fo = open("foo.txt", "r+")
-str = fo.read(10)
-print "读取的字符串是 : ", str
+str85 = fo.read(10)
+print "读取的字符串是 : ", str85
 
 # 查找当前位置
 position = fo.tell()
@@ -762,8 +762,8 @@ print "当前文件位置 : ", position
 
 # 把指针再次重新定位到文件开头
 position = fo.seek(0, 0)
-str = fo.read(10)
-print "重新读取字符串 : ", str
+str8 = fo.read(10)
+print "重新读取字符串 : ", str8
 # 关闭打开的文件
 fo.close()
 
@@ -939,7 +939,7 @@ print  ord('c')
 
 
 s = 'Hello, world.'
-#str(s)
+str(s)
 print  repr(s)
 
 #any() 函数用于判断给定的可迭代参数 iterable 是否全部为空对象，如果都为空、0、false，则返回 False，如果不都为空、0、false，则返回 True。
@@ -1129,8 +1129,8 @@ print(newlist)
 
 
 #Python len() 方法返回对象（字符、列表、元组等）长度或项目个数。
-str = "runoob"
-print len(str)             # 字符串长度
+str7 = "runoob"
+print len(str7)             # 字符串长度
 l = [1,2,3,4,5]
 print len(l)               # 列表元素个数
 
@@ -1351,3 +1351,257 @@ zipped2 = zip(a,c)              # 元素个数与最短的列表一致
 print zipped2
 zipped3=zip(*zipped)          # 与 zip 相反，可理解为解压，返回二维矩阵式
 print zipped3
+
+
+#compile() 函数将一个字符串编译为字节代码。
+
+str24 = "for i in range(0,10): print(i)"
+c = compile(str24,'','exec')   # 编译为字节代码对象
+print c
+#print exec(c)
+
+str5 = "3 * 4 + 5"
+a = compile(str5,'','eval')
+print eval(a)
+
+
+#hasattr() 函数用于判断对象是否包含对应的属性。hasattr(object, name)
+
+class Coordinate:
+    x = 10
+    y = -5
+    z = 0
+
+point1 = Coordinate()
+print(hasattr(point1, 'x'))
+print(hasattr(point1, 'y'))
+print(hasattr(point1, 'z'))
+print(hasattr(point1, 'no'))  # 没有该属性
+
+
+#memoryview() 函数返回给定参数的内存查看对象(Momory view)。
+#所谓内存查看对象，是指对支持缓冲区协议的数据进行包装，在不需要复制对象基础上允许Python代码访问。
+
+v = memoryview('abcefg')
+print v[1]
+print v[-1]
+print v[1:4]
+print v[1:4].tobytes()
+
+"""
+Python3.x 应用：
+>>>v = memoryview(bytearray("abcefg", 'utf-8'))
+>>> print(v[1])
+98
+>>> print(v[-1])
+103
+>>> print(v[1:4])
+<memory at 0x10f543a08>
+>>> print(v[1:4].tobytes())
+b'bce'
+>>>
+"""
+
+
+#round() 方法返回浮点数x的四舍五入值。
+
+print "round(80.23456, 2) : ", round(80.23456, 2)
+print "round(100.000056, 3) : ", round(100.000056, 3)
+print "round(-100.000056, 3) : ", round(-100.001056, 3)
+
+
+#__import__() 函数用于动态加载类和函数 。
+#如果一个模块经常变化就可以使用 __import__() 来动态载入。
+
+import sys
+__import__('a')        # 导入 a.py 模块
+
+
+#complex() 函数用于创建一个值为 real + imag * j 的复数或者转化一个字符串或数为复数。如果第一个参数为字符串，则不需要指定第二个参数。。
+
+print complex(1, 2)
+print complex(1)    # 数字
+print complex("1")  # 当做字符串处理
+
+# 注意：这个地方在"+"号两边不能有空格，也就是不能写成"1 + 2j"，应该是"1+2j"，否则会报错
+print complex("1+2j")
+
+#hash() 用于获取取一个对象（字符串或者数值等）的哈希值。
+print hash('test')            # 字符串
+print hash(1)                 # 数字
+print hash(str([1,2,3]))      # 集合
+print hash(str(sorted({'1':1}))) # 字典
+
+class Test:
+    def __init__(self, i):
+        self.i = i
+for i in range(10):
+    t = Test(1)
+    print(hash(t), id(t))
+#在 hash() 对对象使用时，所得的结果不仅和对象的内容有关，还和对象的 id()，也就是内存地址有关。
+
+
+
+#min() 方法返回给定参数的最小值，参数可以为序列。
+print "min(80, 100, 1000) : ", min(80, 100, 1000)
+print "min(-20, 100, 400) : ", min(-20, 100, 400)
+print "min(-80, -20, -10) : ", min(-80, -20, -10)
+print "min(0, 100, -400) : ", min(0, 100, -400)
+
+#set() 函数创建一个无序不重复元素集，可进行关系测试，删除重复数据，还可以计算交集、差集、并集等。
+x = set('runoob')
+y = set('google')
+print x,y
+print x & y         # 交集
+print x | y         # 并集
+print x - y         # 差集
+
+#delattr 函数用于删除属性。
+#delattr(x, 'foobar') 相等于 del x.foobar。
+
+class Coordinate:
+    x = 10
+    y = -5
+    z = 0
+
+point1 = Coordinate()
+
+print('x = ',point1.x)
+print('y = ',point1.y)
+print('z = ',point1.z)
+
+delattr(Coordinate, 'z')
+
+print('--删除 z 属性后--')
+print('x = ',point1.x)
+print('y = ',point1.y)
+
+# 触发错误  已经被删除
+#print('z = ',point1.z)
+
+
+#help() 函数用于查看函数或模块用途的详细说明。
+
+print help('sys')             # 查看 sys 模块的帮助
+print help('str')             # 查看 str 数据类型的帮助
+a = [1,2,3]
+print help(a)                 # 查看列表 list 帮助信息
+print help(a.append)          # 显示list的append方法的帮助
+
+
+#next() 返回迭代器的下一个项目。
+# 首先获得Iterator对象:
+it = iter([1, 2, 3, 4, 5])
+# 循环:
+while True:
+    try:
+        # 获得下一个值:
+        x = next(it)
+        print(x)
+    except StopIteration:
+        # 遇到StopIteration就退出循环
+        break
+
+#setattr 函数对应函数 getatt()，用于设置属性值，该属性必须存在。
+
+class A(object):
+    bar=1
+a = A()
+print getattr(a, 'bar')          # 获取属性 bar 值
+setattr(a, 'bar', 5)       # 设置属性 bar 值
+print a.bar
+
+#dict() 函数用于创建一个字典。
+dict()                        # 创建空字典
+dict(a='a', b='b', t='t')     # 传入关键字
+dict(zip(['one', 'two', 'three'], [1, 2, 3]))   # 映射函数方式来构造字典
+dict([('one', 1), ('two', 2), ('three', 3)])    # 可迭代对象方式来构造字典
+
+#hex() 函数用于将10进制整数转换成16进制，以字符串形式表示。
+print hex(255),hex(-42),hex(1L),hex(12),type(hex(12))
+
+#slice() 函数实现切片对象，主要用在切片操作函数里的参数传递。
+myslice = slice(5)    # 设置截取5个元素的切片
+print myslice
+
+arr = range(10)
+print arr
+print arr[myslice]         # 截取 5 个元素
+
+#dir() 函数不带参数时，返回当前范围内的变量、方法和定义的类型列表；带参数时，返回参数的属性、方法列表。如果参数包含方法__dir__()，该方法将被调用。如果参数不包含__dir__()，该方法将最大限度地收集参数信息。
+
+print dir()   #  获得当前模块的属性列表
+print dir([ ])    # 查看列表的方法
+
+#id() 函数用于获取对象的内存地址
+a = 'runoob'
+print id(a)
+
+
+#oct() 函数将一个整数转换成8进制字符串。
+
+print oct(10),oct(20),oct(15)
+
+
+#sorted() 函数对所有可迭代的对象进行排序操作。
+
+
+"""
+sort 与 sorted 区别：
+sort 是应用在 list 上的方法，sorted 可以对所有可迭代的对象进行排序操作。
+list 的 sort 方法返回的是对已经存在的列表进行操作，而内建函数 sorted 方法返回的是一个新的 list，而不是在原来的基础上进行的操作。
+"""
+
+a = [5,7,6,3,4,1,2]
+b = sorted(a)       # 保留原列表
+print b
+L=[('b',2),('a',1),('c',3),('d',4)]
+sorted(L, cmp=lambda x,y:cmp(x[1],y[1]))   # 利用cmp函数
+print L
+sorted(L, key=lambda x:x[1])               # 利用key
+print L
+students = [('john', 'A', 15), ('jane', 'B', 12), ('dave', 'B', 10)]
+sorted(students, key=lambda s: s[2])            # 按年龄排序
+print students
+sorted(students, key=lambda s: s[2], reverse=True)       # 按降序
+print students
+
+
+#exec 执行储存在字符串或文件中的Python语句，相比于 eval，exec可以执行更复杂的 Python 代码。
+exec 'print "Hello World"'
+exec "print 'runoob.com'"
+exec """for i in range(5):
+        print "iter time: %d" % i
+    """
+
+
+x = 10
+expr = """
+z = 30
+sum = x + y + z
+print(sum)
+"""
+def func():
+    y = 20
+    exec(expr)
+    exec(expr, {'x': 1, 'y': 2})
+    exec(expr, {'x': 1, 'y': 2}, {'y': 3, 'z': 4})
+
+func()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
